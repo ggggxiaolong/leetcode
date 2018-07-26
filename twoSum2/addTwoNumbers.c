@@ -66,20 +66,23 @@ struct ListNode *addTwoNumbers(struct ListNode *l1, struct ListNode *l2)
     {
         if (longLink != NULL)
         {
-            //长度不同，有进位
-            if (longLink->val == 9)
-            {
-                longLink->val = 0;
-                struct ListNode *tem = (struct ListNode *)malloc(sizeof(struct ListNode));
-                tem->val = 1;
-                tem->next = NULL;
-                longLink->next = tem;
-            } else{
-                longLink->val += 1;
+            //长度不同，有进位， 
+            //末尾一直是9的问题
+            while (inc && longLink !=NULL){
+                if(longLink->val == 9){
+                    longLink->val = 0;
+                    inc = 1;
+                } else {
+                    longLink->val += 1;
+                    inc = 0;
+                }
+                longLink = longLink->next;
             }
-            return res;
+            if(!inc){
+                return res;
+            }
         }
-        //长度相同且有进位， 末尾一直是9的问题
+        //长度相同且有进位; 上面最后一位是9
         struct ListNode *tem = (struct ListNode *)malloc(sizeof(struct ListNode));
         tem->val = 1;
         tem->next = NULL;
