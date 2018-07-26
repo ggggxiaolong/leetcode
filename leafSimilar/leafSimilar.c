@@ -211,7 +211,7 @@ struct TreeNode *node2(){
     // node2->left = node9;
     // node2->right = node8;
 
-     struct TreeNode *root;
+    struct TreeNode *root;
     struct TreeNode *node3;
 
     root = leafNode(1);
@@ -238,7 +238,7 @@ int main()
     link->root = tem;
     link->size = 1;
 
-    tem2->value = root;
+    tem2->value = root2;
     link2->root = tem2;
     link2->size = 1;
 
